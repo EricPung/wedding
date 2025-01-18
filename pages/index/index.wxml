@@ -1,0 +1,132 @@
+<view class="music-button" style="top: {{statusBarHeight + 7}}px;">
+  <image wx:if="{{paused}}" bindtap="play"  class="music-icon" src="./images/music.svg" mode="aspectFit" />
+  <image wx:else bindtap="mute" class="music-icon" src="./images/mute.svg" mode="aspectFit" />
+</view>
+
+<scroll-view class="page-container" enhanced="{{true}}" enable-passive binddragend="onDragend" scroll-into-view="{{currentElement}}" scroll-y="{{allowscroll}}" bindscroll="onScroll" style="padding-top: {{statusBarHeight}}px;">
+  <view wx:if="{{true}}" class="first-page">
+    <view class="first-page-image-box">
+      <view class="invitation-page">
+        <view class="invitation-page-text">
+          <view>WEDDING</view>
+          <view>INVITATION</view>
+          <view style="font-size: 16px;font-weight: normal;">02/15/2025</view>
+        </view>
+        <image mode="widthFix" class="invitation-page-text-top" src="./images/a0f53b36358b3b1cc5fbcfec450fa368-sz_81130.png" />
+        <image mode="widthFix" class="invitation-page-background" src="./images/695b2f31a6b8a08fad59d6325fbe12ca-sz_503691.png" />
+        <image mode="heightFix" class="invitation-page-main" src="./images/39ddd9b75761814023c57f86e4801c07-sz_8919804.png" />
+      </view>
+    </view>
+    <view class="first-page-text-box">
+      <text wx:key="key" wx:for="{{firstPageText}}">{{item}}
+      </text>
+    </view>
+  </view>
+  <view class="second-page">
+    <view class="second-page-title">
+      <view>欢迎参加</view>
+      <view>我们的婚礼</view>
+      <image class="laba" src="./images/laba.png" mode="aspectFit" />
+    </view>
+    <view class="second-page-title-sub">
+      <view>人生有三万多天</view>
+      <view>很开心这一天你专门为我们而来</view>
+    </view>
+    <image class="invitation-text" src="./images/729eab8bc39986a3d400bfe86273b528-sz_496168.png" mode="aspectFit" />
+    <view class="invitation-text-main">
+      <image class="invitation-text-main-background" src="./images/76444385e746bd69e7ac9102b4b19bb2-sz_522463.png" mode="widthFix" />
+      <image class="invitation-text-main-man" src="./images/fa39fa1f6ed45ced356f9d31b33a469e-sz_7558654.png" mode="widthFix" />
+      <image class="invitation-text-main-heart" src="./images/7e37cd7ec0e72eefbdc8470384d4e190-sz_176642.gif" mode="widthFix" />
+    </view>
+    <view class="invitation-text-name">
+      <view>新郎：彭英杰</view>
+      <view>新娘：王瑞</view>
+    </view>
+    <view class="text-info">诚邀您及家人见证我们的幸福</view>
+    <image class="hezhao-a" src="./images/2a2b8e72c6b9c18e48612d6484cdc008-sz_172118.jpg" mode="widthFix" />
+    <view class="our-story">
+      <view class="text-info" style="line-height: 30px;text-align: left; padding: 30px 40px;">
+        <view>时光匆忙</view>
+        <view>我们一起经历了无数个春夏秋冬</view>
+        <view>人生很短</view>
+        <view>但我们的幸福是漫长的、无尽的</view>
+      </view>
+      <image class="widthFix" src="./images/a1.jpg" mode="widthFix" />
+      <image class="widthFix" src="./images/a2.jpg" mode="widthFix" />
+
+      <view class="photo-wall">
+        <view class="photo-wall-box"></view>
+        <image class="photo-wall-box-widthFix" src="./images/bc94e77d1fc4c2ad3c781e458030c3c6-sz_6509311.jpg" mode="widthFix" />
+        <image class="photo-wall-box-widthFix" src="./images/2eac0ba5ebe171c951532c691d67c34b-sz_6647979.jpg" mode="widthFix" />
+
+
+        <image class="photo-wall-box-widthFix" src="./images/ae7d38958b8cfaf734c24596730aec0e-sz_7594163.jpg" mode="widthFix" />
+        <image class="photo-wall-box-douhao" src="./images/8c991040b7c513ede87890a5311170e6-sz_1331039.png" mode="widthFix" />
+        <image class="photo-wall-box-flower" src="./images/8e8d1f1b46175d04eda3816f6170055a-sz_565122.png" mode="heightFix" />
+      </view>
+      <view class="text-info" style="line-height: 30px; padding: 30px 40px;">
+        <view>最美的风景是有你的每一个角落</view>
+        <view>一起踏上属于我们的前方</view>
+        <view>......</view>
+      </view>
+
+    </view>
+    <view class="last-unit">
+      <image class="last-unit-widthFix" src="https://www.ruida.studio:8090/8fbfd4ef260dcf636745a1741cf9ee20-sz_209186.png" mode="widthFix" />
+      <image class="last-unit-heightFix" src="./images/d295e65d1436d78e9b6f78b70834727d-sz_10338216.png" mode="heightFix" />
+      <image class="last-unit-heightFix-heart2" src="./images/2e5978e01c4c07c648e8c0b184acc855-sz_75936.gif" mode="heightFix" />
+      <view class="last-unit-title">
+        <view class="last-unit-title-item" style="padding-left: 15px;">PENG</view>
+        <view class="last-unit-title-item" style="padding-left: 30px;">&WANG</view>
+        <view class="last-unit-title-item">/WEDDING</view>
+      </view>
+    </view>
+    <view class="date-info">
+      <view class=".date-info-main">婚礼时间</view>
+      <view>2025年2月15日 中午12:08</view>
+      <view>乙巳年正月十八 星期六</view>
+      <view class=".date-info-main">婚礼地点</view>
+      <view>七园盟中餐馆</view>
+    </view>
+    <map class="map-info" scale="17" longitude="104.273821" latitude="30.728923" enable-zoom="{{false}}" enable-scroll="{{false}}" markers="{{markers}}" bindmarkertap="navRoad"></map>
+    <view class="add-iamge">
+      <image class="add-iamge-background" src="./images/695b2f31a6b8a08fad59d6325fbe12ca-sz_503691.png" mode="widthFix" />
+      <image class="photo-wall-box-flower" style="top: -70px;" src="./images/8e8d1f1b46175d04eda3816f6170055a-sz_565122.png" mode="heightFix" />
+      <image class="photo-wall-box-cloud" src="./images/d10a0bab48f0af9395547f21104be881-sz_482263.png" mode="heightFix" />
+      <image class="photo-wall-box-cloud" style="left: 120px; top: -65px; transform: rotate(60deg);" src="https://www.ruida.studio:8090/97f2acb33438dafe34ac5ebef2cd4341-sz_28857.png" mode="heightFix" />
+
+      <image class="photo-wall-box-a photo-wall-box-a2" src="https://www.ruida.studio:8090/a62d8f0cb36ba000acc16bbb3a50e05e-sz_7818516.jpg" mode="widthFix" />
+      <image class="photo-wall-box-a photo-wall-box-a1" src="https://www.ruida.studio:8090/cb9d3b86c46df5af2c63df98465823ca-sz_11548801.jpg" mode="widthFix" />
+      <image class="photo-wall-box-c photo-wall-box-c1" src="https://www.ruida.studio:8090/a6611069cf005405a1f9ef9d56c9186a-sz_12101686.png" mode="widthFix" />
+      <image class="photo-wall-box-c photo-wall-box-c2" src="./images/7ea3892c88c27ddd98b85d2127a3c929-sz_435806.png" mode="widthFix" />
+    </view>
+    <view class="text-info" style="line-height: 30px; padding: 60px 40px 30px 40px;">
+      <view> 余生渺渺，只想牵着你的手</view>
+      <view>从天光乍晓到暮雪白头</view>
+    </view>
+  </view>
+  <view class="end" style="height: 550px; position: relative;">
+    <image style="width: 100%; position: absolute; bottom: 100px;" src="https://www.ruida.studio:8090/DSC07003.png" mode="widthFix">
+    </image>
+    <view style="position: absolute; bottom: 120px;width: 100%;text-align: center;font-size: 30px;color: rgb(255, 215, 0);">好久不见，我们婚礼见！</view>
+  </view>
+  <!-- <view class="end" style="height: {{screenHeight}}px;">
+    <image class="endimage" src="https://www.ruida.studio:8090/DSC07003.png" mode="aspectFit" />
+    <image class="end-text" style="top: 50%;" src="https://www.ruida.studio:8090/longtimenosee.png" mode="widthFix" />
+    <image class="end-text" style="top: calc(50% + 70px);width: calc(100% - 120px); left: 60px;" src="https://www.ruida.studio:8090/seeyou.png" mode="widthFix" />
+  </view> -->
+
+</scroll-view>
+<view class="second-page-player" style="height: {{60 + (screenHeight - safeArea.bottom)}}px; transform: scaleY({{(showPlayer  ? 1 : 0)}});">
+  <image style="bottom:{{screenHeight - safeArea.bottom}}px; {{paused}}" class="second-page-player-record {{paused ? '' : 'animation'}}" mode="aspectFit" src="./images/changpian.png" />
+  <view class="second-page-player-background"></view>
+  <image style="bottom:{{screenHeight - safeArea.bottom}}px" class="second-page-player-icon" mode="aspectFit" src="./images/2dcffe3104e7500b58520a90ad0762d4-sz_9083682.png" />
+  <view class="second-page-player-content">
+    <view class="second-page-player-content-title">
+      将故事写成我们
+    </view>
+    <view class="second-page-player-content-sub">
+      <text>5:20</text><text>13:14</text>
+    </view>
+  </view>
+</view>
