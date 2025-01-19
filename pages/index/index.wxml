@@ -1,16 +1,21 @@
-<view class="music-button" style="top: {{statusBarHeight + 7}}px;">
-  <image wx:if="{{paused}}" bindtap="play"  class="music-icon" src="./images/music.svg" mode="aspectFit" />
+<view class="music-button" style="top: {{statusBarHeight + 4}}px;">
+  <image wx:if="{{paused}}" bindtap="play" class="music-icon" src="./images/music.svg" mode="aspectFit" />
   <image wx:else bindtap="mute" class="music-icon" src="./images/mute.svg" mode="aspectFit" />
 </view>
+<view wx:if="{{share}}" class="share-buttons" style="top: {{statusBarHeight + 4}}px;">
+  <button style="width: 32px; margin: 0px;" id="cd" class="share-button" open-type="share">成</button>
+  <button style="width: 32px;  margin: 0px;" id="zz" class="share-button" open-type="share">资</button>
+</view>
 
-<scroll-view class="page-container" enhanced="{{true}}" enable-passive binddragend="onDragend" scroll-into-view="{{currentElement}}" scroll-y="{{allowscroll}}" bindscroll="onScroll" style="padding-top: {{statusBarHeight}}px;">
+<scroll-view class="page-container" enhanced="{{true}}" scroll-with-animation enable-passive binddragend="onDragend" scroll-into-view="{{currentElement}}" scroll-y="{{allowscroll}}" bindscroll="onScroll" style="padding-top: {{statusBarHeight}}px;">
   <view wx:if="{{true}}" class="first-page">
     <view class="first-page-image-box">
       <view class="invitation-page">
         <view class="invitation-page-text">
           <view>WEDDING</view>
           <view>INVITATION</view>
-          <view style="font-size: 16px;font-weight: normal;">02/15/2025</view>
+          <view wx:if="{{city === 'cd'}}" style="font-size: 16px;font-weight: normal;">02/15/2025</view>
+          <view wx:else style="font-size: 16px;font-weight: normal;">02/04/2025</view>
         </view>
         <image mode="widthFix" class="invitation-page-text-top" src="./images/a0f53b36358b3b1cc5fbcfec450fa368-sz_81130.png" />
         <image mode="widthFix" class="invitation-page-background" src="./images/695b2f31a6b8a08fad59d6325fbe12ca-sz_503691.png" />
@@ -21,6 +26,15 @@
       <text wx:key="key" wx:for="{{firstPageText}}">{{item}}
       </text>
     </view>
+
+    <!-- ": ' -->
+    <view wx:if="{{currentElement === '.first-page'}}" class="guideline" style="bottom: {{screenHeight - safeArea.bottom + 2}}px;">
+      <image class="guideline-arrow arrow1" src="./images/arrow.svg" mode="widthFix" />
+      <image class="guideline-arrow arrow2" src="./images/arrow.svg" mode="widthFix" />
+      <image class="guideline-arrow arrow3" src="./images/arrow.svg" mode="widthFix" />
+    </view>
+
+
   </view>
   <view class="second-page">
     <view class="second-page-title">
@@ -81,14 +95,28 @@
         <view class="last-unit-title-item">/WEDDING</view>
       </view>
     </view>
-    <view class="date-info">
+    <view wx:if="{{city === 'cd'}}" class="date-info">
       <view class=".date-info-main">婚礼时间</view>
       <view>2025年2月15日 中午12:08</view>
       <view>乙巳年正月十八 星期六</view>
       <view class=".date-info-main">婚礼地点</view>
       <view>七园盟中餐馆</view>
     </view>
-    <map class="map-info" scale="17" longitude="104.273821" latitude="30.728923" enable-zoom="{{false}}" enable-scroll="{{false}}" markers="{{markers}}" bindmarkertap="navRoad"></map>
+    <view wx:else class="date-info">
+      <view class=".date-info-main">婚礼时间</view>
+      <view>2025年2月04日 中午12:08</view>
+      <view>乙巳年正月初七 星期二</view>
+      <view class=".date-info-main">婚礼地点</view>
+      <view>喜悦·玫瑰花语宴会中心</view>
+    </view>
+    <view class="map-box" bind:tap="navRoad">
+      <map wx:if="{{city === 'cd'}}" class="map-info" scale="17" longitude="104.273821" latitude="30.728923" enable-zoom="{{false}}" enable-scroll="{{false}}" markers="{{markers}}" bindmarkertap="navRoad"></map>
+
+      <map wx:else class="map-info" scale="17" longitude="104.84652" latitude="29.753837" enable-zoom="{{false}}" enable-scroll="{{false}}" markers="{{markers}}" bindmarkertap="navRoad"></map>
+    </view>
+
+
+
     <view class="add-iamge">
       <image class="add-iamge-background" src="./images/695b2f31a6b8a08fad59d6325fbe12ca-sz_503691.png" mode="widthFix" />
       <image class="photo-wall-box-flower" style="top: -70px;" src="./images/8e8d1f1b46175d04eda3816f6170055a-sz_565122.png" mode="heightFix" />
@@ -105,16 +133,12 @@
       <view>从天光乍晓到暮雪白头</view>
     </view>
   </view>
-  <view class="end" style="height: 550px; position: relative;">
-    <image style="width: 100%; position: absolute; bottom: 100px;" src="https://www.ruida.studio:8090/DSC07003.png" mode="widthFix">
+  <view class="end" style="height: 350px; position: relative;">
+    <image style="width: 100%; position: absolute; bottom: {{screenHeight - safeArea.bottom}}px;" src="https://www.ruida.studio:8090/DSC07003.png" mode="widthFix">
     </image>
-    <view style="position: absolute; bottom: 120px;width: 100%;text-align: center;font-size: 30px;color: rgb(255, 215, 0);">好久不见，我们婚礼见！</view>
+    <view style="height:{{ screenHeight - safeArea.bottom + 80}}px;" class="endtext">好久不见，我们婚礼见！</view>
+
   </view>
-  <!-- <view class="end" style="height: {{screenHeight}}px;">
-    <image class="endimage" src="https://www.ruida.studio:8090/DSC07003.png" mode="aspectFit" />
-    <image class="end-text" style="top: 50%;" src="https://www.ruida.studio:8090/longtimenosee.png" mode="widthFix" />
-    <image class="end-text" style="top: calc(50% + 70px);width: calc(100% - 120px); left: 60px;" src="https://www.ruida.studio:8090/seeyou.png" mode="widthFix" />
-  </view> -->
 
 </scroll-view>
 <view class="second-page-player" style="height: {{60 + (screenHeight - safeArea.bottom)}}px; transform: scaleY({{(showPlayer  ? 1 : 0)}});">
